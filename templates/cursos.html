@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Cursos disponibles{% endblock %}
+
+{% block content %}
+    {% if session.usuario %}
+        <h2>Bienvenido, {{ session.usuario }}</h2>
+    {% endif %}
+
+    <h3>Cursos disponibles</h3>
+
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Docente</th>
+                <th>Cupos</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+            <tr>
+                <td>{{ curso.nombre }}</td>
+                <td>{{ curso.docente }}</td>
+                <td>{{ curso.cupos }}</td>
+                <td>
+                    {% if curso.cupos > 0 %}
+                        Curso disponible
+                    {% else %}
+                        Curso lleno
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

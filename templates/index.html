@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for msg in messages %}
+                    <li style="color:green;">{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% if usuario_preferido %}
+        <h2>Bienvenido nuevamente, {{ usuario_preferido }}.</h2>
+        <a href="{{ url_for('eliminar_cookie') }}">Eliminar cookie</a>
+    {% else %}
+        <h2>Bienvenido al Portal Académico.</h2>
+    {% endif %}
+{% endblock %}

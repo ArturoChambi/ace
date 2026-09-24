@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Portal Académico{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Portal Académico</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Inicio</a> |
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('lista_cursos') }}">Cursos</a> |
+            <a href="{{ url_for('perfil') }}">Perfil</a> |
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 Portal Académico - Arturo Chambi Villalobos</p>
+    </footer>
+</body>
+</html>
